@@ -1,0 +1,64 @@
+<meta name="viewport"
+     charset="UTF-8" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+
+<head>
+    <link href="{{ url_for('static', filename='Table.css') }}" rel="stylesheet">
+    <script src="/static/filecheck.js"></script>
+</head>
+<!--메인 화면 html-->
+<html>
+
+<body class="backg">
+    
+    <div class="mainbox">
+
+    </div>
+    
+<button  href="https://www.dnetgroup.kr/" class="floatdiv">
+    <img href="https://www.dnetgroup.kr/" src="/static/logo2.png" width="100px" alt=""/>
+</button>
+
+    <table border id='inst' class = "table">
+
+        <tbody id="tblShow"></tbody>
+    </table>
+
+<p style="text-align:center;">
+<br>
+<script>
+    function download_click(s) {
+        alert(s+"번째 다운로드 버튼을 누르셨습니다.")
+    }
+
+    function remove_click(s) {
+        var result = confirm("삭제하시겠습니까?");
+        if(result){
+          
+            var form = document.createElement('form');
+            form.setAttribute('method', 'post');
+            form.setAttribute('action', '/re');
+            document.charset = "utf-8";
+
+            var hiddenField = document.createElement('input');
+            hiddenField.setAttribute('type', 'hidden');
+            hiddenField.setAttribute('name', 'url');
+            hiddenField.setAttribute('value', s);
+            form.appendChild(hiddenField);
+            document.body.appendChild(form);
+            form.submit();
+
+            
+        }else{
+
+        }
+
+
+}
+
+
+    
+</script> 
+</body>
+
+
+</html>

@@ -1,0 +1,23 @@
+<link href="{{ url_for('static', filename='test_login.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test_login.js"></script><!--js 적용-->
+<script type="text/javascript" src="/static/sweetalart2.js"></script><!--js 적용-->
+
+
+
+<body style="background-color: lightgray; text-align: center;">
+
+    <div style="background-color: white; width: 500px; height: 600px; left: 50%; margin-left: -250px; position: absolute;">
+
+        <input id="Notice_Title" type="text" maxlength="30" placeholder="제목을 입력해 주세요" style="margin-top: 50px;">
+        
+        <br>
+        <p style="margin-left: 280px; font-size: 10px;"> 180자 내외로 작성해주세요</p>
+        <input id="Notice" type="text" maxlength="180" style="width: 400px; height: 300px;">
+        
+        <br>
+        <button onclick="Upload_Notice()" style="margin-top: 10px; width: 100px; height: 40px;" >작성하기</button>
+        <button onclick="location.href='/Test_Page'" style="margin-top: 10px; width: 100px; height: 40px;" >뒤로가기</button>
+    
+    </div>
+</body>

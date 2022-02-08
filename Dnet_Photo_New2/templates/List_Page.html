@@ -1,0 +1,83 @@
+게시글 작성 및 게시글 목록 보기
+
+<link href="{{ url_for('static', filename='test_login.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test_login.js"></script><!--js 적용-->
+<script type="text/javascript" src="/static/sweetalart2.js"></script><!--js 적용-->
+
+<!--onload="Show_List()"-->
+
+<body>
+    <div>
+        <title>테스트 페이지</title>
+        <table id="User_Info" border="1">
+            <tr>
+                <th>이름</th>
+                <th>제목</th>
+                <th>날짜</th>
+                <th>조회수</th>
+            </tr>
+            <tr>
+                <td>{{session['User_Name']}}</td>
+                <td id="Title1" onclick="Main_Text1()"></td>
+                <td id="date1"></td>
+                <td id="View1"></td>
+            </tr>
+            <tr>
+                <td>{{session['User_Name']}}</td>
+                <td id="Title2" onclick="Main_Text2()"></td>
+                <td id="date2"></td>
+                <td id="View2"></td>
+            </tr>
+            <tr>
+                <td>{{session['User_Name']}}</td>
+                <td id="Title3" onclick="Main_Text3()"></td>
+                <td id="date3"></td>
+                <td id="View3"></td>
+            </tr>
+            <tr>
+                <td>{{session['User_Name']}}</td>
+                <td id="Title4" onclick="Main_Text4()"></td>
+                <td id="date4"></td>
+                <td id="View4"></td>
+            </tr>
+            <tr>
+                <td>{{session['User_Name']}}</td>
+                <td id="Title5" onclick="Main_Text5()"></td>
+                <td id="date5"></td>
+                <td id="View5"></td>
+            </tr>
+            <tr>
+                <td>{{session['User_Name']}}</td>
+                <td id="Title6" onclick="Main_Text6()"></td>
+                <td id="date6"></td>
+                <td id="View6"></td>
+            </tr>
+            <tr>
+                <td>{{session['User_Name']}}</td>
+                <td id="Title7" onclick="Main_Text7()"></td>
+                <td id="date7"></td>
+                <td id="View7"></td>
+            </tr>
+            <tr>
+                <td>{{session['User_Name']}}</td>
+                <td id="Title8" onclick="Main_Text8()"></td>
+                <td id="date8"></td>
+                <td id="View8"></td>
+            </tr>
+            <tr>
+                <td>{{session['User_Name']}}</td>
+                <td id="Title9" onclick="Main_Text9()"></td>
+                <td id="date9"></td>
+                <td id="View9"></td>
+            </tr>
+            <tr>
+                <td>{{session['User_Name']}}</td>
+                <td id="Title10" onclick="Main_Text10()"></td>
+                <td id="date10"></td>
+                <td id="View10"></td>
+            </tr>
+        </table>
+        <!--input type="button" value="행추가" onclick="Add_List()"-->
+    </div>
+</body>

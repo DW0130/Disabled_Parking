@@ -1,0 +1,22 @@
+
+<link href="{{ url_for('static', filename='test_login.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test_login.js"></script><!--js 적용-->
+<script type="text/javascript" src="/static/sweetalart2.js"></script><!--js 적용-->
+
+
+
+로그인시 넘어와야할 페이지
+
+<body>
+    <div>
+        <p>회원정보</p>
+        <p>{{session['User_ID']}}님 반갑습니다</p>
+        <p>아이디 : {{session['User_ID']}}</p>  
+        <p>이름 : {{session['User_Name']}}</p>
+        <a>비밀번호 :</a> <input type="password" id="Ch_PW">
+        <a>비밀번호확인 :</a> <input type="password" id="Ch_RePW"> <button onclick="Ch_information()">비밀번호 변경하기</button>
+        <button onclick="location.href='/List_Page'; Show_List()">리스트목록보기</button>
+        <button onclick="location.href='/Notice_Board'">글올리기</button>
+    </div>
+</body>

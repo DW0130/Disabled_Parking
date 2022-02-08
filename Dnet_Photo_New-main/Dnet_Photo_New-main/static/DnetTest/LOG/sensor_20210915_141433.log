@@ -1,0 +1,14 @@
+DEBUG:root:141436:[Setting Speed Limit]
+DEBUG:root:141436:[IS_SETTING_COPIED_FROM_USB] False
+DEBUG:root:141436:[IS_SETTING_COPIED_FROM_BT]  False
+DEBUG:root:141436:SPEED_LIMIT_YELLOW:        10 Km/h
+DEBUG:root:141436:SPEED_LIMIT_RED:           10 Km/h
+DEBUG:root:141436:SPEED_LIMIT_FOR_PICTURE:   30 Km/h
+DEBUG:root:141436:SPEED_LIMIT_FOR_ALARM:   30 Km/h
+DEBUG:root:141436:DISTANCE_FOR_PIC_MIN:      18 m
+DEBUG:root:141436:DISTANCE_FOR_PIC_MAX:      38 m
+DEBUG:root:141438:[showSpeed]   0Km/h /     0m / Retry:20 ||||||||||||||||||||
+DEBUG:root:141440:[showSpeed]   0Km/h /     0m / Retry:20 ||||||||||||||||||||
+DEBUG:root:141442:[showSpeed]   0Km/h /     0m / Retry:20 ||||||||||||||||||||
+DEBUG:root:141444:[showSpeed]   0Km/h /     0m / Retry:20 ||||||||||||||||||||
+DEBUG:root:141446:[showSpeed]   0Km/h /     0m / Retry:20 ||||||||||||||||||||

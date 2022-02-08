@@ -1,0 +1,57 @@
+<link href="{{ url_for('static', filename='test_login.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test_login.js"></script><!--js 적용-->
+<script type="text/javascript" src="/static/sweetalart2.js"></script><!--js 적용-->
+
+
+<head>
+    <title>글쓰기</title>
+</head>
+
+<body style="position: absolute; left: 50%; margin-left: -150; text-align: center;">
+    
+    <div>
+        <p>Write a post</p>
+        <tr><td>제목</td></tr> <input type="text" id="Title" maxlength="15">
+        
+        <br>
+        <input type="text" id="Main_Text" maxlength="180">
+        <button onclick="Notice_Board()">글올리기</button>
+
+        <br>
+        <input type="text" id="Title_text">
+        <button onclick="Serch_Title()">검색</button>
+        
+        <br>
+        <button onclick="location.href='/'">메인화면</button>
+    </div>
+
+    <div>
+        <p>리스트목록</p>
+        <ul>
+            <li>사과</li>
+            <li>바나나</li>
+            <li>수박</li>
+        </ul>
+    </div>
+    
+    </div>
+        <!-- 예제코드 -->
+    <table border="1">
+        <caption>
+            출석부
+        </caption>
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+        </tr>
+        <tr>
+            <td>영희</td>
+            <td>10살</td>
+        </tr>
+        <tr>
+            <td>철수</td>
+            <td>9살</td>
+        </tr>
+    </table>
+</body>

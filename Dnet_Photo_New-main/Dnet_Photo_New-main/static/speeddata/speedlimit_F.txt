@@ -1,0 +1,16 @@
+Yellow Number: 9
+Red Number: 11
+>
+[Picture Setting]
+Speed limit for Picture: 12
+Speed Limit for Alatm: 14
+Minimum Distance for Picture: 28
+Maximum Distance for Picture: 46
+>
+[LED Setting]
+LED Brightness: 100
+>
+[Log Setting]
+Log file Enabled: 1
+Realtime log Enabled: 1
+>

@@ -1,0 +1,8 @@
+/home/pi/Desktop/image/Dnet/2021-08-25/Time_152231[34KPH][45.8M].png:87바0101:5101
+/home/pi/Desktop/image/Dnet/2021-08-25/Time_152231[34KPH][45.8M].png:87우0101:5101
+/home/pi/Desktop/image/Dnet/2021-08-25/Time_152231[34KPH][45.8M].png:87가0101:5101
+/home/pi/Desktop/image/Dnet/2021-08-25/Time_152231[34KPH][45.8M].png:87소0101:5101
+/home/pi/Desktop/image/Dnet/2021-08-25/Time_160811[36KPH][34.8M].png:87소0101:5101
+/home/pi/Desktop/image/Dnet/2021-08-25/Time_160811[36KPH][34.8M].png:87하0101:5101
+/home/pi/Desktop/image/Dnet/2021-08-25/Time_160811[36KPH][34.8M].png:87수0101:5101
+/home/pi/Desktop/image/Dnet/2021-08-25/Time_160811[36KPH][34.8M].png:187수0101:5101

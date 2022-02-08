@@ -1,0 +1,35 @@
+중복방지 회원가입 및 로그인시 페이지 전환하기
+
+<link href="{{ url_for('static', filename='test_login.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test_login.js"></script><!--js 적용-->
+<script type="text/javascript" src="/static/sweetalart2.js"></script><!--js 적용-->
+
+
+<body>
+    <div>
+        <form method="post" action="../static/test_login.js"></form>
+        <form method="post" action="../templates/Test_Page.html"></form>
+        <table border="2">
+            <caption>계정 정보입력</caption>
+            <tr class="Table_Title">
+                <th>아이디</th>
+                <th>비밀번호</th>
+                <th>비밀번호 확인</th>
+                <th>이름</th>
+            </tr>
+            <tr>
+                <td><input type="text" id="ID"></td>
+                <td><input type="password" id="PW" maxlength="15"></td>
+                <td><input type="password" id="Re_PW" maxlength="15"></td>
+                <td><input type="text" id="Name" maxlength="10"></td>
+            </tr>
+        </table>
+        <button onclick="Check_Login()">로그인</button>
+        <button onclick="Information()">등록하기</button>
+    </div>
+    <div>
+        
+    </div>
+</body>
+

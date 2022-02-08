@@ -1,0 +1,15 @@
+Yellow Number: 0
+Red Number: 15
+>
+[Picture Setting]
+Speed limit for Picture: 17
+Minimum Distance for Picture: 15
+Maximum Distance for Picture: 26
+>
+[LED Setting]
+LED Brightness: 100
+>
+[Log Setting]
+Log file Enabled: 1
+Realtime log Enabled: 1
+>
