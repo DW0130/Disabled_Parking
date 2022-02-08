@@ -1,0 +1,85 @@
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+
+<head>
+    <!--첫 로그인 화면-->
+</head>
+
+
+<style>
+    div {
+        margin: auto;
+        margin-top: 7%;
+        width: 60%;
+        height: 62%;
+        box-shadow: 5px 5px 5px 5px rgb(185, 185, 185);
+      } 
+      div.left {
+        margin-top: 0%;
+        width: 50%;
+        height: 100%;
+        float: left;
+        box-sizing: border-box;
+        background-size: cover;
+        background-image: url("/static/BA.png");
+      }
+      div.right {
+        margin-top: 0%;
+        width: 50%;
+        height: 100%;
+        float: right;
+        box-sizing: border-box;
+        background: #ffffff;
+      }
+      .img {margin: 0px auto; 
+        display: block;}
+</style>
+<body class="logbackg">
+    
+    <div class="div">
+        <div class="left">
+            
+        </div>
+        <div class="right">
+            <p class="logtext" style="text-align:center;">User Login</p>
+            <form method="POST" action="/login">   
+            <label id="tex" class="text2">ID </label>  
+            <input type="text" name="num"class="logbox" id="senser" ></label> 
+            <br>
+            <label id="tex" class="text2">PW </label>
+            <input type="password" name="num2" class="logbox" id="senser2"></label>
+            <br>
+            <button type="submit" class="logbox2">Login</button>
+            </form>
+        </div>
+        
+        
+        
+        
+        <!-- 아래내용은 리셋관련(추후 추가할에정)       -->
+    </div>
+    {%with messages = get_flashed_messages()%}
+    {%if messages %}
+    <script type="text/javascript">
+      alert("{{messages[-1]}}");
+    </script>
+    {%endif%}
+    {%endwith%}
+    <button onclick=doPopupopen()>리</button>
+    <script type="text/javascript">
+      function doPopupopen() {
+         window.open("popup", "popup01", "width=300, height=360");
+      }
+      </script>
+
+    <form method="GET" action="/restart">
+      
+      <button type="submit">리셋</button>
+      </form>
+
+</body>
+
+
+</html>
