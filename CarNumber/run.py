@@ -8,11 +8,7 @@ num = "1905다9437니1"
 print(num) # 입력된 번호판 값
 
 string = num
-#numbers = re.findall('\d+', string) # 문자열 -> 숫자만 
 C_Num = re.findall('\w', string) # 문자열 -> 문자만 # re.findall('\w', string)  = 1개씩 분리
-
-# print(numbers)
-# print(C_Num) # 번호판 쪼개기
 
 n = 0
 exit = 0
@@ -45,16 +41,10 @@ while exit == 0:
                 if Value == num.index(Check_data):
                     
                     print("==========================")
-                    # print("기준 글자 : ", Check_data)
-                    # print("7자리")
                     Result = ''.join(data1)
-                    # print("++++++++++++++++++++++++++")
                     print(Result)
-                    # print("++++++++++++++++++++++++++")
                     print("==========================")
-                    # print("++++++++++")
                     exit = 1
-                    if(exit == 1): break  #if(C_data == 1):
                     
 
             i = 0
@@ -68,15 +58,10 @@ while exit == 0:
                 if Value == num.index(Check_data):
                     
                     print("==========================")
-                    # print("기준 글자 : ", Check_data)
-                    # print("8자리")
                     Result = ''.join(data2)
-                    # print("++++++++++++++++++++++++++")
                     print(Result)
-                    # print("++++++++++++++++++++++++++")
                     print("==========================")
                     exit = 1
-                    if(exit == 1): break  #if(C_data == 1):
 
         if(exit == 1): break
     
