@@ -87,10 +87,6 @@ while exit == 0:
 
             if(i == 0): # 번호리스트에서 기준글자만 있는경우, 현 리스트에서 좌측 3번째 위치에 글자가 오도록 유도할것
                 
-                Value = start_1 + 2
-                val1 = start - 1
-                # val = 
-                print(Value)
                 print(num.find(Check_data))
                 if Value == num.find(Check_data):
 
