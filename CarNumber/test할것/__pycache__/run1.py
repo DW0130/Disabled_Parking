@@ -8,8 +8,10 @@ from tabnanny import check
 from this import d
 from tracemalloc import stop
 
-num = "145가77115" #45가7711
-#num = "1이305다9437나1" #305다9437
+#num = "45가7711" #45가7711
+#num = "385호6523" #385호6523
+#num = "1니85저4128" # 85저4128
+num = "1이305다9437나1" #305다9437
 #num = "경기45바4456" #경기45바4456
 #num = "11경기75사090111" #경기75사0901
 print("==========================")
@@ -54,10 +56,14 @@ def NumList7():
     
                 Check_data = data 
                 data1 = num[start_1:end_1] 
-                numcheck = num[start_1 -1]
+                numcheck = num[start_1 -1] ##
+            
 
             if(Check_data != 0): 
                 for data in data1: 
+                    Check_data2 = data
+                    if(Check_data2 != Check_data):
+                        i = 1
                     if(data.isalpha() != Check_data): i = 1 # 7자리 번호, 기준글자와 중복방지 
     
                 i = AddSearch(numcheck)
@@ -108,6 +114,8 @@ def NumList8():
                 for data in data2: 
                     if(data.isalpha()): # 8자리 번호, 기준글자와 중복방지 
                         if (data != Check_data): i = 1 
+                        
+
     
                 if(i == 0): # 번호리스트에서 기준글자만 있는경우, 현 리스트에서 좌측 3번째 위치에 글자가 오도록 유도할것 
                     
