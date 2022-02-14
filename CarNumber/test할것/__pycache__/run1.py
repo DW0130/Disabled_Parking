@@ -1,138 +1,195 @@
 
-from cgitb import text
-from doctest import testfile
+
+# 1. 인식된 번호를 좌측에서부터 7자리,8자리를 찾기
+# 2. 번호의 기준이 되는 글자 찾기
+# 3. 인식된 번호에서 기준이된 글자를 제외한 글자가 나오는지 확인후 기준이된 번호만 있다면 다음진행 아니면 다시 찾기
+# 4. 기준이된 글자가 7자리번호의 글자위치인지, 8자리번호의 글자위치인지 확인
+# 5. 결과값 출력
+
+
+
+######## 함수사용
+
 from itertools import count
 from multiprocessing.sharedctypes import Value
+from pydoc import text
 import re
-from tabnanny import check
-from this import d
-from tracemalloc import stop
+from tracemalloc import start
 
-#num = "45가7711" #45가7711
+#num = "45가7715" #45가7715
 #num = "385호6523" #385호6523
-#num = "1니85저4128" # 85저4128
-num = "1이305다9437나1" #305다9437
-#num = "경기45바4456" #경기45바4456
-#num = "11경기75사090111" #경기75사0901
-print("==========================")
-print("입력된 정보: ", num) # 입력된 번호판 값
-print("==========================")
+#num = "1이305다9437나1" #305다9437
+#num = "1니85저4128" # 85저4128 오류
+num = "경기45바4456" #경기45바4456
 
-j = 0
+# 오류발생
+#num = "1경기75사090111" #경기75사0901
+#num = "1145가7715"
+print("===========입력 정보============")
+print(num) # 입력된 번호판 값
 
-#7자리의 좌측 끝 -1부분의 정보확인
+string = num
+C_Num = re.findall('\w', string) # 문자열 -> 문자만 # re.findall('\w', string)  = 1개씩 분리
+
+
+
 def AddSearch(data):
+
+    if(data.isdigit()):
+        if(data == 1):
+            k = 0
+        else: 
+            k = 1
+        return k
+    elif(data.isalpha()):
+        k = 0
+        return k
+
     
-    if (data.isalpha() == False):
-
-        val = re.findall(r'\d',data)
-        print(val)
-        if(val[0] == '1'):
-            i = 0
-            return i
-        elif(val[0] != '1'):
-            i = 1
-            return i
-    else:
-        i = 1
-        return i
-
-
-#7자리일경우
-def NumList7():
+def Old_Num():
 
     for n in range(10):
-    
-        exit = 0  
-    
-        start_1 = 0 + n
-        end_1 = 7 + n
         
-        for data in num: 
-    
-            i = 0 
-            Check_data = 0 
-            if(data.isalpha()): # 기준이 되는 글자 검색 
-    
-                Check_data = data 
-                data1 = num[start_1:end_1] 
-                numcheck = num[start_1 -1] ##
-            
+        start = 0 + n
+        end = 7 + n
+        exit = 0
+        
+        for data1 in num:
 
-            if(Check_data != 0): 
-                for data in data1: 
-                    Check_data2 = data
-                    if(Check_data2 != Check_data):
-                        i = 1
-                    if(data.isalpha() != Check_data): i = 1 # 7자리 번호, 기준글자와 중복방지 
-    
-                i = AddSearch(numcheck)
-
-                if(i == 0): # 번호리스트에서 기준글자만 있는경우, 현 리스트에서 좌측 3번째 위치에 글자가 오도록 유도할것 
-                    
-                    Value = start_1 + 2 
-                    if Value == num.index(Check_data): 
-
-                        
-                        print("==========================") 
-                        print("기준 글자 : ", Check_data) 
-                        print("7자리") 
-                        Result = ''.join(data1) 
-                        print(Result) 
-                        print("==========================") 
-                        exit = 1 
-                        test_i = 1
-                        return test_i
-                    else:
-                        test_i = 0
-                        return test_i
+            Check_data = 0
+            if(data1.isalpha()):
+                Check_data = data1
+                main_data = num[start:end]
+                Num_check = num[start -1]
                 
-            if(exit == 1): return test_i
-        if(exit == 1): return test_i
-    if(exit == 1): return test_i
+                i = 0
+                for data2 in main_data:
+                    if(data2.isalpha()):
+                        if(data2 != Check_data): i = 1
 
-#8자리일경우
-def NumList8():
-    for n in range(10):  
+                if(Num_check <= '4'):i = AddSearch(Num_check)
 
-        exit = 0  
-
-        start_2 = 0 + n 
-        end_2 = 8 + n 
-        
-        for data in num: 
-    
-            Check_data = 0 
-            if(data.isalpha()): # 기준이 되는 글자 검색 
-    
-                Check_data = data 
-                data2 = num[start_2:end_2] 
-    
-            if(Check_data != 0):                    
-    
-                i = 0 
-                for data in data2: 
-                    if(data.isalpha()): # 8자리 번호, 기준글자와 중복방지 
-                        if (data != Check_data): i = 1 
+                Text_Val = start + 2
+                if Text_Val == num.index(Check_data):
+                    if (i == 0):
                         
+                        print("===========최종결과============") 
+                        print("구형")  
+                        print("결과", main_data) 
 
-    
-                if(i == 0): # 번호리스트에서 기준글자만 있는경우, 현 리스트에서 좌측 3번째 위치에 글자가 오도록 유도할것 
+                        exit = 1
                     
-                    Value = start_2 + 3 
-                    if Value == num.index(Check_data): 
+                    if(exit == 1): 
+                        Plan = 1
+                        return Plan
+                    else:
+                        Plan = 0
+                        return Plan
+            if(exit == 1): break
+                
+        if(exit == 1): break
+
+
+def New_Num():
+
+    for n in range(10):
+        
+        start = 0 + n
+        end = 8 + n
+        exit = 0
+        # print("신형")
+        # print(n,"번실행")
+        # print("------------------")
+        
+        for data1 in num:
+
+            Check_data = 0
+            if(data1.isalpha()):
+                Check_data = data1
+                main_data = num[start:end]
+                
+                i = 0
+                for data2 in main_data:
+                    if(data2.isalpha()):
+                        if(data2 != Check_data): i = 1
+                if(i == 0):
+                    Text_Val = start + 3
+                    if Text_Val == num.index(Check_data):
                         
-                        print("==========================") 
-                        print("기준 글자 : ", Check_data) 
-                        print("8자리") 
-                        Result = ''.join(data2) 
-                        print(Result) 
-                        print("==========================") 
-                        exit = 1 
-            if(exit == 1): break  #if(C_data == 1): 
-        if(exit == 1): break 
+                        print("===========최종결과============") 
+                        print("신형")  
+                        print("결과", main_data) 
+                        
+                        exit = 1
+
+            if(exit == 1): break
+        if(exit == 1): break
 
 
-j = NumList7()
+def Business_Num():
+    
+    for data in num:
+        
+        Check = 0
+        if(data.isalpha()):
+            # Check_data = data1
+            location_data = num.find(data)
+            Check = 1
 
-if(j == 0) :NumList8()
+            if(Check == 1): break
+
+    text1 = num[location_data]
+    text2 = num[location_data +1]
+    
+    if(text1.isalpha() and text2.isalpha()):
+        for n in range(10):
+            
+            start = 0 + n
+            end = 7 + n
+            exit = 0
+            
+            for data1 in num:
+
+                Check_data = 0
+                if(data1.isalpha()):
+                    Check_data = data1
+                    main_data = num[start:end]
+                    Num_check = num[start -1]
+                    
+                    i = 0
+                    for data2 in main_data:
+                        if(data2.isalpha()):
+                            if(data2 != Check_data): i = 1
+
+                    i = AddSearch(Num_check)
+
+                    Text_Val = start + 2
+                    if Text_Val == num.index(Check_data):
+                        if (i == 0):
+                            
+                            print("===========최종결과============") 
+                            print("사업용")  
+                            print("결과", text1 + text2 + main_data) 
+
+                            exit = 1
+                        
+                        if(exit == 1): 
+                            Plan = 1
+                            return Plan
+                        else:
+                            Plan = 0
+                            return Plan
+                if(exit == 1): break
+                    
+            if(exit == 1): break
+    else:
+        Plan = 0
+        return Plan
+        
+
+
+
+
+Plan = Business_Num()
+if(Plan == 0): Old_Num()
+if(Plan == 0): New_Num()
