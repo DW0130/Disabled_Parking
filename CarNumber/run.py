@@ -1,5 +1,4 @@
 
-
 # 1. 인식된 번호를 좌측에서부터 7자리,8자리를 찾기
 # 2. 번호의 기준이 되는 글자 찾기
 # 3. 인식된 번호에서 기준이된 글자를 제외한 글자가 나오는지 확인후 기준이된 번호만 있다면 다음진행 아니면 다시 찾기
@@ -7,18 +6,19 @@
 # 5. 결과값 출력
 
 
+from datetime import datetime
 import re
 
 num = "45가7715" #45가7715
-num = "385호6523" #385호6523
-num = "1이305다9437나1" #305다9437
-num = "1니85저4128" # 85저4128 오류
-num = "경기45바4456" #경기45바4456
-num = "12경기75사090111" #경기75사0901
-num = "대구42고7284" #대구42고7284
+#num = "385호6523" #385호6523
+#num = "1이305다9437나1" #305다9437
+#num = "1니85저4128" # 85저4128 오류
+#num = "경기45바4456" #경기45바4456
+#num = "12경기75사090111" #경기75사0901
+#num = "대구42고7284" #대구42고7284
 #num = "11145가7715" #145가7715
 
-num = "145니85저4128" # 85저4128 오류
+#num = "123가4567" # 85저4128 오류
 
 print("===========입력정보===========")
 print(num) # 입력된 번호판 값
@@ -27,7 +27,7 @@ print(num) # 입력된 번호판 값
 
 
     
-def Old_Num():
+def Old_Num(num):
 
     for n in range(10):
         
@@ -52,15 +52,15 @@ def Old_Num():
                 if Text_Val == num.index(Check_data):
                     if (i == 0):
 
-                        Result = num, main_data
                         exit = 1
+                        Result = main_data
             if(exit == 1): break
                 
         if(exit == 1): break
-    return Result
+    return Result, exit
 
 
-def New_Num():
+def New_Num(num):
 
     for n in range(10):
 
@@ -84,16 +84,16 @@ def New_Num():
                     Text_Val = start + 3
                     if Text_Val == num.index(Check_data):
                         
-                        Result = num, main_data
+                        Result = main_data
                         exit = 1
             
             if(exit == 1): break
     
         if(exit == 1): break
-    return Result
+    return Result, exit
 
 
-def Business_Num():
+def Business_Num(num):
 
     for data3 in num:
 
@@ -125,20 +125,22 @@ def Business_Num():
                             if Text_Val == num.index(Check_data):
                                 if (i == 0):
                                     
-                                    Result = num, text1 + text2 + main_data
+                                    Result = text1 + text2 + main_data
                                     exit = 1
         
                         if(exit == 1): break
                 
                     if(exit == 1): break
         if(exit == 1): break
-    return Result
+    return Result, exit
 
 
 DEV_SHOW_LOG = ''
 Result = ''
-Result = Business_Num()
-if(Result.isalpha() == False): Result = New_Num()
-if(Result.isalpha() == False): Result = Old_Num()
+Result = Business_Num(num)
+if(Result[1] == 0): Result = New_Num(num)
+if(Result[1] == 0): Result = Old_Num(num)
 
-print(Result)
+today_date = datetime.now()
+print("=====결과=====")
+print(Result[0],today_date)
