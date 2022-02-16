@@ -1,4 +1,8 @@
 # _*_ Encoding:UTF-8 _*_#
+
+#python -m cProfile -s time file.py
+import time
+
 import cv2
 import sys
 import numpy as np
@@ -12,8 +16,8 @@ import re
 from PIL import Image
 from picamera.array import PiRGBArray
 from picamera import PiCamera
-import time
-from datetime import date
+
+#from datetime import date
 
 from datetime import datetime
 from email.mime.multipart import MIMEMultipart
@@ -22,17 +26,24 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 
+
 #[GENERAL SETTING INSTANCES]
 SW_NAME = 'LPR'
-VERSION = '220207_00'
+VERSION = '220216_00'
 DEBUG = True #False #make it True to check logs
-#DEV_ALL = False
-DEV_ALL = True
+#DEV_ALL = True
+DEV_ALL = False
+
 DEV_SHOW_LOG = False
-DEV_SHOW_IMG = True
+DEV_SHOW_LOG_DETAILED = False
+DEV_SHOW_IMG = False
+DEV_SHOW_TIME = True
+
 if DEV_ALL:
     DEV_SHOW_LOG = True
-    DEV_SHOW_IMG = False
+    DEV_SHOW_LOG_DETAILED = True
+    DEV_SHOW_IMG = True
+    DEV_SHOW_TIME = True
     
 #[PI CAM SETTING INSTANCES]
 IMG_WIDTH = 1280
@@ -180,105 +191,53 @@ def setCamSetting(cam_location):
 #WIDTH  1274-1243 = 31
 #plate_height:526 plate_width:113 plate ratio:4.654867256637168
 
-def sendEmail(licensePlateNumber, capturedImg, today, Car_Num):
+def sendEmail(licensePlateNumber, capturedImg, today, Car_Num, img_data):
     img_path = saveCapturedImage(capturedImg)
+    img_path2 = saveCapturedImage2(img_data)
+    #server.sendmail(EMAIL_ID, EMAIL_ID, licensePlateNumber.encode('utf-8'))
+    
+    text = "Time: " + today + "\nOriginal :" + licensePlateNumber + "\nReformatted :" + Car_Num
     
     subject = "What's News"              # Subject
     msg = MIMEMultipart()  
     msg['Subject'] = subject
-    msg.attach(MIMEText(Car_Num))
+    msg.attach(MIMEText(text))
+
+
+    part = MIMEBase('application', "octet-stream")  
+    part.set_payload(open(img_path, "rb").read())  
+    encoders.encode_base64(part)  
+    part.add_header('Content-Disposition', 'attachment; filename="image1.jpg"')   # File name and
+    msg.attach(part)
     
-    #msg['From'] = me  
-    #msg['To'] = toaddr  
-    #msg.preamble = "test "   
-    #msg.attach(MIMEText(text))
-    
-    #server.sendmail(EMAIL_ID, EMAIL_ID, licensePlateNumber.encode('utf-8'))
+    part = MIMEBase('application', "octet-stream")  
+    part.set_payload(open(img_path2, "rb").read())  
+    encoders.encode_base64(part)  
+    part.add_header('Content-Disposition', 'attachment; filename="image2.jpg"')   # File name and
+    msg.attach(part)
+
     server.sendmail(EMAIL_ID, EMAIL_ID, msg.as_string())
     server.quit()
-    
 
     
 
-      
-    # part = MIMEBase('application', "octet-stream")  
-    # part.set_payload(open(img_path, "rb").read())  
-    # encoders.encode_base64(part)  
-    # part.add_header('Content-Disposition', 'attachment; filename="image.jpg"')   # File name and
-
-    
-'''
-def captureImageFromPiCam_ORIG():
-    rawCapture = PiRGBArray(camera, size=(IMG_WIDTH, IMG_HEIGHT))
-    for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-        image = frame.array
-        cv2.imshow("Frame", image)
-        key = cv2.waitKey(1) & 0xFF
-        rawCapture.truncate(0)
-        if key == ord("s"):
-             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #convert to grey scale
-             gray = cv2.bilateralFilter(gray, 11, 17, 17) #Blur to reduce noise
-             edged = cv2.Canny(gray, 30, 200) #Perform Edge detection
-             cnts = cv2.findContours(edged.copy(), cv2.RETR_TREE,              cv2.CHAIN_APPROX_SIMPLE)
-             cnts = imutils.grab_contours(cnts)
-             cnts = sorted(cnts, key = cv2.contourArea, reverse = True)[:10]
-             screenCnt = None
-             for c in cnts:
-                peri = cv2.arcLength(c, True)
-                #approx = cv2.approxPolyDP(c, 0.018 * peri, True)
-                approx = cv2.approxPolyDP(c, 0.018 * peri, True)
-                if len(approx) == 4:
-                  screenCnt = approx
-                  break
-             if screenCnt is None:
-               detected = 0
-               print ("No contour detected")
-             else:
-               detected = 1
-             if detected == 1:
-               cv2.drawContours(image, [screenCnt], -1, (0, 255, 0), 3)
-             mask = np.zeros(gray.shape,np.uint8)
-             new_image = cv2.drawContours(mask,[screenCnt],0,255,-1,)
-             new_image = cv2.bitwise_and(image,image,mask=mask)
-             (x, y) = np.where(mask == 255)
-             (topx, topy) = (np.min(x), np.min(y))
-             (bottomx, bottomy) = (np.max(x), np.max(y))
-             Cropped = gray[topx:bottomx+2, topy:bottomy+2]
-             #Cropped = gray[topx:bottomx-1, topy:bottomy-1]
-             resized = cv2.resize(Cropped, None, fx=1.5, fy=1.5) #ADDED
-             #denoised = denoiseImage(resized)        #ADDED
-             Cropped = adaptivThresholding(resized) #ADDED
-             #ORIG CODE
-             #text = pytesseract.image_to_string(Cropped, config='--psm 11')
-             #text = pytesseract.image_to_string(Cropped, lang='kor', config='--psm 7 --oem 0')
-             text = pytesseract.image_to_string(Cropped, \
-                                                lang='kor', \
-                                                config='--dpi 200  \
-                                                        --psm 6  \
-                                                        --oem 0  \
-                                                        -c tessedit_char_whitelist=' + WHITELIST_LPR_CHARS)
-                              
-             #pytesseract.image_to_string(img_result, lang='kor', config='--psm 7 --oem 0')
-             print("Detected Number is:",text)
-             textDivider(text)
-             server.sendmail(EMAIL_ID,EMAIL_ID,text.encode('utf-8'))
-             cv2.imshow("Frame", image)
-             cv2.imshow('Cropped',Cropped)
-             cv2.waitKey(0)
-             break
-    cv2.destroyAllWindows()
-'''
 def captureImageFromPiCam():
     global IMG_WIDTH
     global IMG_HEIGHT
     rawCapture = PiRGBArray(camera, size=(IMG_WIDTH, IMG_HEIGHT))
     for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
         image = frame.array
-        cv2.imshow("Frame", image)
-        key = cv2.waitKey(1) & 0xFF
-        rawCapture.truncate(0)
+
+        # NO_SHOW_VIDEO
+        
+        # cv2.imshow("Frame", image)
+        # key = cv2.waitKey(1) & 0xFF
+        # rawCapture.truncate(0)
+        return image
+    '''
         if key == ord("s"):
             return image
+    '''
 
 def saveCapturedImage(img):
     full_path = FILE_IMG_PATH + 'tmp_image.jpg'
@@ -290,22 +249,36 @@ def saveCapturedImage(img):
     else:
         if DEV_SHOW_LOG:
             print('Error in saving file')
-        
+            
+
+def saveCapturedImage2(img):
+    full_path = FILE_IMG_PATH + 'tmp_image2.jpg'
+    result = cv2.imwrite(full_path, img)
+    if result:
+        if DEV_SHOW_LOG:
+            print('File saved successfully')
+            return full_path
+    else:
+        if DEV_SHOW_LOG:
+            print('Error in saving file')
+
+   
+def saveCapturedImage3(img):
+    full_path = FILE_IMG_PATH + 'tmp_image3.jpg'
+    result = cv2.imwrite(full_path, img)
+    if result:
+        if DEV_SHOW_LOG:
+            print('File saved successfully')
+            return full_path
+    else:
+        if DEV_SHOW_LOG:
+            print('Error in saving file')
+
+
 def showSWVersion():
     print('{0}: Ver. {1}'.format(SW_NAME, VERSION))
-'''
-def readImage(path):
-    img_loaded = cv2.imread(path)
-    height, width, channel = img_loaded.shape
-    #if DEV_ALL:
-    if False:
-        plt.figure(figsize=(12, 10))
-        plt.imshow(img_loaded, cmap='gray')
-        plt.show()
-        print("[1]IMAGE LOAD DONE")
 
-    return img_loaded
-'''
+
 def recordLicensePlateNumber(plateNum):
     global NUM_OF_TEXT_LENGTH_TO_DETECT
     funcName = 'recordLicensePlateNumber'
@@ -317,8 +290,6 @@ def recordLicensePlateNumber(plateNum):
         writeMode = 'w' #CREATE FILE IF THE FILE DOES NOT EXIST
         if DEV_SHOW_LOG:
             print("[DEBUG] {0}: {1}".format(funcName, '[NEW] No File Found. Create LPR Text File'))
-    #if DEBUG:
-    #    print("[DEBUG] {0}: {1}".format(funcName, '[NEW] add new LPR data: ' + plateNum))
 
     file_in_pi = open(TEXT_FILE_PATH + today + '.txt', writeMode)
     output = imgFilePath + ':' + plateNum + ':' + plateNum[-NUM_OF_TEXT_LENGTH_TO_DETECT:]
@@ -362,15 +333,10 @@ def imageThreshBasedOnBrightnessForNight(img):
     std = np.around(np.std(val), 3)
     
     print('brightness_mean: {0} /  brightness_median: {1} / std: {2}'.format(brightness_mean, brightness_median, std))
-    #threshold_val = 255-(brightness+std)
-    #threshold_val = 255 - (brightness + std * 1.2)
-    #threshold_val = ((brightness_mean + brightness_median) / 2 + (brightness_mean - brightness_median))
-    #threshold_val = (brightness_mean + brightness_median) / 2 + 30
 
     if brightness_mean < 100:
         threshold_val = brightness_mean * 2 - brightness_median + std  #good for nighttime
     else:
-        #threshold_val = brightness_mean - std #good for daytime
         threshold_val = brightness_mean * 2 - brightness_median - std
     
     print('threshold_val: {0}'.format(threshold_val))
@@ -495,7 +461,7 @@ def selectCandidates(tmp_result, contours_dict):
     for d in contours_dict:
         area = d['w'] * d['h']
         ratio = d['w'] / d['h']
-        if DEV_SHOW_LOG:
+        if DEV_SHOW_LOG_DETAILED:
             print('MIN_AREA: {0} MAX_AREA: {1} area: {2} width: {3} / height: {4} / ratio: {5} / '.format(MIN_AREA, MAX_AREA, area, d['w'], d['h'], ratio))
 
         if MIN_AREA < area < MAX_AREA \
@@ -505,7 +471,7 @@ def selectCandidates(tmp_result, contours_dict):
             d['idx'] = cnt
             cnt += 1
             possible_contours.append(d)
-            if DEV_SHOW_LOG:
+            if DEV_SHOW_LOG_DETAILED:
                 print('MIN_AREA: {0} MAX_AREA: {1} area: {2} width: {3} / height: {4} / ratio: {5} / '.format(MIN_AREA, MAX_AREA, area, d['w'], d['h'], ratio))
     if DEV_SHOW_IMG:
         plt.figure(figsize=(12, 10))
@@ -655,6 +621,14 @@ def rotatePlateImages(matched_result, img_adapted):
 
     return plate_imgs
 
+
+    #img_cropped
+################################# 
+
+
+
+
+
 def anotherThresholdToFindChars(plate_imgs):
     #def anotherThresholdToFindChars(plate_imgs, PATH_IMG):
     #[ANOTHER THRESHOLDING TO FIND CHARS]
@@ -689,7 +663,7 @@ def anotherThresholdToFindChars(plate_imgs):
             and MAX_WIDTH > w > MIN_WIDTH \
             and MAX_HEIGHT > h > MIN_HEIGHT \
             and MIN_RATIO < ratio < MAX_RATIO:
-                if DEV_SHOW_LOG:
+                if DEV_SHOW_LOG_DETAILED:
                     print('area:{0} width:{1} Height:{2} Ratio: {3}'.format(area, w, h, ratio))
             
                 if x < plate_min_x:
@@ -759,7 +733,13 @@ def anotherThresholdToFindChars(plate_imgs):
             plt.imshow(img_result, cmap='gray')
             plt.show()
 
-        return result_chars
+        return result_chars, img_result
+
+
+
+
+        # img_result
+    ######################################3
 
 def isValidLP(result_chars):
     digit_cnt=0
@@ -773,39 +753,7 @@ def isValidLP(result_chars):
         return False
 
     return True
-'''
-def digitCounter(numStr):
-    n=int(numStr)
-    count=0
-    while(n>0):
-        count=count+1
-        n=n//10
-    print("The number of digits in the number are:",count)
-    return count
-'''
-'''
-def textDivider_OLD(lprText):
-    hangul = re.compile('[^ㄱ-ㅣ가-힣]+') # 한글과 띄어쓰기를 제외한 모든 글자
-    # hangul = re.compile('[^ \u3131-\u3163\uac00-\ud7a3]+')  # 위와 동일
-    koreanLetter = hangul.sub('', lprText) # 한글과 띄어쓰기를 제외한 모든 부분을 제거
-    print("Korean: ")
-    print(koreanLetter)
 
-    numbers = hangul.findall(lprText) # 정규식에 일치되는 부분을 리스트 형태로 저장
-    num1 = numbers[0]
-    num2 = numbers[1]
-    print("Number1: " + num1)
-    print("Number2: " + num2)
-
-    return koreanLetter, numbers
-'''
-
-'''
-def textDivider(lpText):
-    strList = re.split('(\d+)',lpText.strip())
-    findChar(strList)
-    print('textDivider strList: {0}'.format(strList))
-'''
 
 def findChar(lp):
     for idx, content in enumerate(lp):
@@ -815,23 +763,18 @@ def findChar(lp):
             break
     return idx, content
 
+
 def reformattingLP(result_chars):
-    #strList = textDivider(result_chars)
     index, koreanChar = findChar(result_chars)
     if DEV_SHOW_LOG:
         print('[reformattingLP] FOUND Korean letter at [{0}/{1}] {2}'.format(index, len(result_chars), koreanChar))
-        
-    #if result_chars.len() - index > 3: #front numbers must be 2 or 3
-        
-
-    #if result_chars.len() - index > 3: #rear numbers must be 4
         
     
 def rerun():
     print('rerun')
 
 
-def Old_Num(num):
+def validateOldNum(num):
 
     for n in range(10):
         
@@ -864,7 +807,7 @@ def Old_Num(num):
     return Result, exit
 
 
-def New_Num(num):
+def validateNewNum(num):
 
     for n in range(10):
 
@@ -897,7 +840,7 @@ def New_Num(num):
     return Result, exit
 
 
-def Business_Num(num):
+def validateBusinessNum(num):
 
     for data3 in num:
 
@@ -938,6 +881,13 @@ def Business_Num(num):
         if(exit == 1): break
     return Result, exit
 
+def runtimeChecker(funcName, prevEndTime):
+    if DEV_SHOW_TIME:
+        print("[END TIME][%s]--- %s seconds ---" % (funcName, time.time() - prevEndTime))
+        return time.time()
+    else:
+        return 0
+    
 
 def run():
     global result_chars
@@ -958,15 +908,16 @@ def run():
     #[GET BRIGHTNESS AND RETURN THRESHOLD VALUE]
     #threshold_val = imageThreshBasedOnBrightness(img_orig
     threshold_val = imageThreshBasedOnBrightnessForNight(img_orig)
-    
+    prevFuncEndTime = start_time
+    prevFuncEndTime = runtimeChecker("[imageThreshBasedOnBrightnessForNight]", prevFuncEndTime)
     #[DENOISE IMAGE]
     img_denoised = denoiseImage(img_orig)
+    prevFuncEndTime = runtimeChecker("[denoiseImage]", prevFuncEndTime)
     #[ENLARGE IMAGE]
     img_enlarged = enlargeImage(img_denoised)
     img_threshed = convertIMGtoGrayscale(img_enlarged, threshold_val)
     #[MAXIMIZE CONTRAST]
     img_contrasted = maximizeContrast(img_threshed)
-
     #[ADAPTIVE THRESHOLDING]
     img_adapted = adaptivThresholding(img_contrasted)
     #[FIND CONTOURS]
@@ -981,55 +932,75 @@ def run():
     matched_result = collectMatchedResult(result_idx, possible_contours)
     plate_imgs = rotatePlateImages(matched_result, img_adapted)
     #result_chars = anotherThresholdToFindChars(plate_imgs, PATH_IMG)
-    result_chars = anotherThresholdToFindChars(plate_imgs)
+    #result_chars = anotherThresholdToFindChars(plate_imgs)
+    data = anotherThresholdToFindChars(plate_imgs)
 
 
-
-
-
-    Original_Num = anotherThresholdToFindChars(plate_imgs)
-    today = str(datetime.now())
+    img_data = data[1]
+    Original_Num = data[0]
     
-    Result = ''
-    Result = Business_Num(Original_Num)
-    if(Result[1] == 0): Result = New_Num(Original_Num)
-    if(Result[1] == 0): Result = Old_Num(Original_Num)
-    print("=====결과1=====")
-    print(Result[0])
-    print(today)
-
+    
+    today = datetime.now().strftime('%Y-%m-%d %H:%M:%S')    
+    # Result = ''
+    Result = validateBusinessNum(Original_Num)
+    if(Result[1] == 0): Result = validateNewNum(Original_Num)
+    if(Result[1] == 0): Result = validateOldNum(Original_Num)
+    
     final_result_chars = reformattingLP(Original_Num)
+    print('[LP Found] Time: {0}'. format(today))
     print('[LP Found] Original: {0}'.format(Original_Num))
-    print('[LP Found] Reformatted: {0}'.format(Result[0]))
+    print('[LP Found] Reformatted: {0}'.format(final_result_chars))
     print('[LP Found] Send Email to {0}'.format(EMAIL_ID))
-    print("결과 =", Result[0])
-    sendEmail(Original_Num, img_orig, today, Result[0])
-
+    # sendEmail(Original_Num, img_orig, today, Result[0], img_data)
 
 
 '''
-    if not isValidLP(result_chars):
-        rerun()
-    else:
-        final_result_chars = reformattingLP(result_chars)
-        print('[LP Found] Original: {0}'.format(result_chars))
-        print('[LP Found] Reformatted: {0}'.format(final_result_chars))
-        print('[LP Found] Send Email to {0}'.format(EMAIL_ID))
-        sendEmail(result_chars, img_orig)
-'''
-
-
-
-
+start_time = time.time()
 run()
+tm = time.localtime(time.time() - start_time)
+print("[END TIME]--- %s seconds ---" % tm.tm_sec)
+
+'''
+
+n = 0
+while True:
+    start_time = time.time()
+    print("repeat :", n)
+    run()
+    n = n + 1
+    tm = time.localtime(time.time() - start_time)
+    print("--- %s seconds ---" % tm.tm_sec)
+
+# exit()
 
 
 
 
-exit()
-
-#print("plateText: {0}".format(result_chars[-4:]))
 
 
 
 
+
+'''
+import cv2
+
+img = cv2.imread("image.jpg", cv2.IMREAD_COLOR)
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+gray = cv2.GaussianBlur(gray, (7, 7), 1.5)
+gray = cv2.Canny(gray, 0, 50)
+cv2.imshow("edges", gray)
+cv2.waitKey();
+
+
+import cv2
+
+img = cv2.UMat(cv2.imread("image.jpg", cv2.IMREAD_COLOR))
+imgUMat = cv2.UMat(img)
+
+gray = cv2.cvtColor(imgUMat, cv2.COLOR_BGR2GRAY)
+gray = cv2.GaussianBlur(gray, (7, 7), 1.5)
+gray = cv2.Canny(gray, 0, 50)
+cv2.imshow("edges", gray)
+cv2.waitKey();
+
+'''
