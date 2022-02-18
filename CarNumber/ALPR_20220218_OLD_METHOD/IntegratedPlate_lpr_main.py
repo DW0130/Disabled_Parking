@@ -24,7 +24,10 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
+from os import rename
 
+import logging
+import traceback
 
 
 #[GENERAL SETTING INSTANCES]
@@ -34,10 +37,12 @@ DEBUG = True #False #make it True to check logs
 #DEV_ALL = True
 DEV_ALL = False
 
-DEV_SHOW_LOG = False
+DEV_SHOW_LOG = True
 DEV_SHOW_LOG_DETAILED = False
 DEV_SHOW_IMG = False
 DEV_SHOW_TIME = True
+DEV_SHOW_ERROR = True
+DEV_SHOW_ERR = False
 
 if DEV_ALL:
     DEV_SHOW_LOG = True
@@ -46,7 +51,9 @@ if DEV_ALL:
     DEV_SHOW_TIME = True
     
 #[PI CAM SETTING INSTANCES]
-IMG_WIDTH = 1280
+#IMG_WIDTH = 1280
+    
+IMG_WIDTH = 1080 
 IMG_HEIGHT = 720
 camera = PiCamera()
 camera.color_effects = (128,128) #ADDED BLACK AND WHITE
@@ -177,6 +184,12 @@ def setCamSetting(cam_location):
     else:
         if DEV_SHOW_LOG:
             print('CAM Location Unknown')
+            logging.error('CAM Location Unknown')
+        if DEV_SHOW_ERROR:
+            logging.error("[3]setCamSetting")
+        if DEV_SHOW_ERR:
+            print("[3]setCamSetting")
+            
         MAX_DIAG_MULTIPLYER = 5
         MAX_ANGLE_DIFF = 12.0
         MAX_AREA_DIFF = 0.5 #0.5
@@ -221,10 +234,16 @@ def sendEmail(licensePlateNumber, capturedImg, today, Car_Num, img_data):
 
     
 
-def captureImageFromPiCam():
+def captureImageFromPiCam(repeat):
     global IMG_WIDTH
     global IMG_HEIGHT
     rawCapture = PiRGBArray(camera, size=(IMG_WIDTH, IMG_HEIGHT))
+
+    if DEV_SHOW_ERROR:
+        logging.error("[2]captureImageFromPiCam")
+    if DEV_SHOW_ERR:
+        print("[2]captureImageFromPiCam")
+    
     for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
         image = frame.array
 
@@ -233,12 +252,14 @@ def captureImageFromPiCam():
         # cv2.imshow("Frame", image)
         # key = cv2.waitKey(1) & 0xFF
         # rawCapture.truncate(0)
+        saveCapturedImage_Startcheck(image, repeat)
         return image
     '''
         if key == ord("s"):
             return image
     '''
-
+'''    
+# test
 def saveCapturedImage(img):
     full_path = FILE_IMG_PATH + 'tmp_image.jpg'
     result = cv2.imwrite(full_path, img)
@@ -261,22 +282,52 @@ def saveCapturedImage2(img):
     else:
         if DEV_SHOW_LOG:
             print('Error in saving file')
+'''
 
    
-def saveCapturedImage3(img):
-    full_path = FILE_IMG_PATH + 'tmp_image3.jpg'
+def saveCapturedImage_Startcheck(img, repeat):
+    #full_path = FILE_IMG_PATH + 'sdf.jpg'
+    full_path = FILE_IMG_PATH + '%s_000가0000.jpg'%(str(repeat).zfill(6))
     result = cv2.imwrite(full_path, img)
     if result:
         if DEV_SHOW_LOG:
             print('File saved successfully')
+            logging.error('File saved successfully')
             return full_path
     else:
         if DEV_SHOW_LOG:
             print('Error in saving file')
+            logging.error('Error in saving file')
+            
+def saveCapturedImage_Endcheck(img, repeat, Original_Num):
+    #full_path = FILE_IMG_PATH + 'sdf.jpg'
+    file_name = '%s_000가0000.jpg'%(str(repeat).zfill(6))
+    file_rename = '%s_%s.jpg'%(str(repeat).zfill(6), Original_Num)
+    rename(file_name, file_rename)
 
+    '''
+    #full_path = FILE_IMG_PATH + '%s_%s.jpg'%(str(repeat).zfill(6), Original_Num)
+    #result = cv2.imwrite(rename, img)
+    if result:
+        if DEV_SHOW_LOG:
+            print('File saved successfully')
+            logging.error('File saved successfully')
+            return full_path
+    else:
+        if DEV_SHOW_LOG:
+            print('Error in saving file')
+            logging.error('Error in saving file')
+    '''
 
 def showSWVersion():
     print('{0}: Ver. {1}'.format(SW_NAME, VERSION))
+    logging.error('{0}: Ver. {1}'.format(SW_NAME, VERSION))
+
+    if DEV_SHOW_ERROR:
+        logging.error("[1]showSWVersion")
+    if DEV_SHOW_ERR:
+        print("[1]showSWVersion")
+        
 
 
 def recordLicensePlateNumber(plateNum):
@@ -290,6 +341,7 @@ def recordLicensePlateNumber(plateNum):
         writeMode = 'w' #CREATE FILE IF THE FILE DOES NOT EXIST
         if DEV_SHOW_LOG:
             print("[DEBUG] {0}: {1}".format(funcName, '[NEW] No File Found. Create LPR Text File'))
+            logging.error("[DEBUG] {0}: {1}".format(funcName, '[NEW] No File Found. Create LPR Text File'))
 
     file_in_pi = open(TEXT_FILE_PATH + today + '.txt', writeMode)
     output = imgFilePath + ':' + plateNum + ':' + plateNum[-NUM_OF_TEXT_LENGTH_TO_DETECT:]
@@ -298,6 +350,7 @@ def recordLicensePlateNumber(plateNum):
     file_in_pi.write('\n')
     if DEV_SHOW_LOG:
         print("[DEBUG] {0}".format(output))
+        logging.error("[DEBUG] {0}".format(output))
 
     file_in_pi.close()
 
@@ -306,10 +359,12 @@ def showResult(src, num):
     plt.imshow(src, cmap='gray')
     plt.show()
     print("[ {0} ]".format(num))
+    logging.error("[ {0} ]".format(num))
 
 def debugLogger(funcName, contents):
     if DEV_SHOW_LOG:
-        print("[DEBUG] {0}: {1}".format(funcName, contents))       
+        print("[DEBUG] {0}: {1}".format(funcName, contents))
+        logging.error("[DEBUG] {0}: {1}".format(funcName, contents))       
 
 def imageThreshBasedOnBrightness(img):
     #[GET BRIGHTNESS OF THE IMAGE]
@@ -318,8 +373,10 @@ def imageThreshBasedOnBrightness(img):
     brightness = np.around(np.mean(val), 3)
     std = np.around(np.std(val), 3)
     print('brightness: {0} / STD: {1}'.format(brightness, std))
+    logging.error('brightness: {0} / STD: {1}'.format(brightness, std))
     threshold_val = 255-(brightness+std)
     print('threshold_val: {0}'.format(threshold_val))
+    logging.error('threshold_val: {0}'.format(threshold_val))
     return threshold_val
 
 def imageThreshBasedOnBrightnessForNight(img):
@@ -333,6 +390,7 @@ def imageThreshBasedOnBrightnessForNight(img):
     std = np.around(np.std(val), 3)
     
     print('brightness_mean: {0} /  brightness_median: {1} / std: {2}'.format(brightness_mean, brightness_median, std))
+    logging.error('brightness_mean: {0} /  brightness_median: {1} / std: {2}'.format(brightness_mean, brightness_median, std))
 
     if brightness_mean < 100:
         threshold_val = brightness_mean * 2 - brightness_median + std  #good for nighttime
@@ -340,6 +398,12 @@ def imageThreshBasedOnBrightnessForNight(img):
         threshold_val = brightness_mean * 2 - brightness_median - std
     
     print('threshold_val: {0}'.format(threshold_val))
+    logging.error('threshold_val: {0}'.format(threshold_val))
+
+    if DEV_SHOW_ERROR:
+        logging.error("[4]imageThreshBasedOnBrightnessForNight")
+    if DEV_SHOW_ERR:
+        print("[4]imageThreshBasedOnBrightnessForNight")
 
     return threshold_val
 
@@ -350,6 +414,10 @@ def denoiseImage(targetIMG):
         plt.imshow(img_denoised, cmap='gray')
         plt.show()
         print("[2]DENOISE DONE")
+    if DEV_SHOW_ERROR:
+        logging.error("[5]denoiseImage")
+    if DEV_SHOW_ERR:
+        print("[5]denoiseImage")
 
     return img_denoised
     
@@ -362,6 +430,11 @@ def enlargeImage(targetIMG):
     dim = (width, height)
     img_enlarged = cv2.resize(targetIMG, dim, interpolation = cv2.INTER_AREA)
     height, width, channel = img_enlarged.shape
+
+    if DEV_SHOW_ERROR:
+        logging.error("[6]enlargeImage")
+    if DEV_SHOW_ERR:
+        print("[6]enlargeImage")
     return img_enlarged
 
 def convertIMGtoGrayscale(targetIMG, threshold_value):
@@ -369,6 +442,11 @@ def convertIMGtoGrayscale(targetIMG, threshold_value):
     img_gray = cv2.cvtColor(targetIMG, cv2.COLOR_BGR2GRAY)
     thresh = cv2.threshold(img_gray, threshold_value, 255, cv2.THRESH_BINARY_INV)[1]
     img_threshed = 255 - thresh
+
+    if DEV_SHOW_ERROR:
+        logging.error("[7]convertIMGtoGrayscale")
+    if DEV_SHOW_ERR:
+        print("[7]convertIMGtoGrayscale")
     return img_threshed
 
 def maximizeContrast(targetIMG):
@@ -384,6 +462,11 @@ def maximizeContrast(targetIMG):
         plt.imshow(targetIMG, cmap='gray')
         print("[3]MAXIMIZE CONTRAST")
         plt.show()
+        
+    if DEV_SHOW_ERROR:
+        logging.error("[8]maximizeContrast")
+    if DEV_SHOW_ERR:
+        print("[8]maximizeContrast")
         
     return targetIMG
 
@@ -405,6 +488,12 @@ def adaptivThresholding(targetIMG):
         plt.imshow(targetIMG, cmap='gray')
         print("[4]ADAPTIVE THRESHOLDING")
         plt.show()
+    
+    if DEV_SHOW_ERROR:
+        logging.error("[9]adaptivThresholding")
+    if DEV_SHOW_ERR:
+        print("[9]adaptivThresholding")
+        
     return targetIMG
 
 def findContours(targetIMG):
@@ -424,6 +513,12 @@ def findContours(targetIMG):
         plt.imshow(tmp_result)
         print("[5]FIND CONTOURS")
         plt.show()
+    
+    if DEV_SHOW_ERROR:
+        logging.error("[10]findContours")
+    if DEV_SHOW_ERR:
+        print("[10]findContours")
+        
     return tmp_result, contours
 
 def prepareData(tmp_result, contours):
@@ -450,6 +545,12 @@ def prepareData(tmp_result, contours):
         plt.imshow(tmp_result, cmap='gray')
         print("[6]PREPARE DATA")
         plt.show()
+        
+    if DEV_SHOW_ERROR:
+        logging.error("[11]prepareData")
+    if DEV_SHOW_ERR:
+        print("[11]prepareData")
+
     return contours_dict
 
 
@@ -478,6 +579,11 @@ def selectCandidates(tmp_result, contours_dict):
         plt.imshow(tmp_result, cmap='gray')
         print("[7]SELECT CANDIDATES BY CHAR SIZE")
         plt.show()
+        
+    if DEV_SHOW_ERROR:
+        logging.error("[12]selectCandidates")
+    if DEV_SHOW_ERR:
+        print("[12]selectCandidates")
 
     return possible_contours
 
@@ -499,6 +605,11 @@ def visualizePossibleContours(possible_contours):
         plt.imshow(tmp_result, cmap='gray')
         print("[8]VISUALIZE POSSIBLE CONTOURS")
         plt.show()
+        
+    if DEV_SHOW_ERROR:
+        logging.error("[13]visualizePossibleContours")
+    if DEV_SHOW_ERR:
+        print("[13]visualizePossibleContours")
 
 #[SELECT CANDIDATES BY ARRANGEMENT OF CONTOURS]
 def find_chars(contour_list):
@@ -605,7 +716,9 @@ def rotatePlateImages(matched_result, img_adapted):
         if img_cropped.shape[1] / img_cropped.shape[0] < MIN_PLATE_RATIO \
            or img_cropped.shape[1] / img_cropped.shape[0] < MIN_PLATE_RATIO > MAX_PLATE_RATIO:
             continue
-        if DEV_SHOW_LOG: print('plate_height:{0} plate_width:{1} plate ratio:{2}'.format(img_cropped.shape[1], img_cropped.shape[0], img_cropped.shape[1] / img_cropped.shape[0]))
+        if DEV_SHOW_LOG:
+            print('plate_height:{0} plate_width:{1} plate ratio:{2}'.format(img_cropped.shape[1], img_cropped.shape[0], img_cropped.shape[1] / img_cropped.shape[0]))
+            logging.error('plate_height:{0} plate_width:{1} plate ratio:{2}'.format(img_cropped.shape[1], img_cropped.shape[0], img_cropped.shape[1] / img_cropped.shape[0]))
         
         plate_imgs.append(img_cropped)
         plate_infos.append({
@@ -618,16 +731,12 @@ def rotatePlateImages(matched_result, img_adapted):
             plt.subplot(len(matched_result), 1, i+1)
             plt.imshow(img_cropped, cmap='gray')
             plt.show()
+        if DEV_SHOW_ERROR:
+            logging.error("[14]rotatePlateImages")
+        if DEV_SHOW_ERR:
+            print("[14]rotatePlateImages")
 
     return plate_imgs
-
-
-    #img_cropped
-################################# 
-
-
-
-
 
 def anotherThresholdToFindChars(plate_imgs):
     #def anotherThresholdToFindChars(plate_imgs, PATH_IMG):
@@ -708,6 +817,7 @@ def anotherThresholdToFindChars(plate_imgs):
         if digit_cnt < 4:
             if DEV_SHOW_LOG:
                 print("digit_cnt: {0}. Skip to next result".format(digit_cnt))
+                logging.error("digit_cnt: {0}. Skip to next result".format(digit_cnt))
             continue
     
         result_len = len(result_chars)
@@ -717,10 +827,12 @@ def anotherThresholdToFindChars(plate_imgs):
             result_chars = "0000"
         if DEV_SHOW_LOG:
             print('LPR: ' +result_chars)
+            logging.error('LPR: ' +result_chars)
 
         if result_len > 3 and result_len < 9: # IGNORE NUMBER IF OUT OF RANGE 7~9
             if DEV_SHOW_LOG:
                 print("Result: {0} / Digit Count: {1} / Last 4 Digits: {2}".format(result_chars, digit_cnt, result_chars[-NUM_OF_TEXT_LENGTH_TO_DETECT:]))
+                logging.error("Result: {0} / Digit Count: {1} / Last 4 Digits: {2}".format(result_chars, digit_cnt, result_chars[-NUM_OF_TEXT_LENGTH_TO_DETECT:]))
             #recordLicensePlateNumber(result_chars)
             #recordLicensePlateNumber(PATH_IMG, result_chars)
         #else:
@@ -732,6 +844,11 @@ def anotherThresholdToFindChars(plate_imgs):
             plt.subplot(len(plate_imgs), 1, i+1)
             plt.imshow(img_result, cmap='gray')
             plt.show()
+
+        if DEV_SHOW_ERROR:
+            logging.error("[15]anotherThresholdToFindChars")
+        if DEV_SHOW_ERR:
+            print("[15]anotherThresholdToFindChars")
 
         return result_chars, img_result
 
@@ -760,6 +877,7 @@ def findChar(lp):
         if not content.isdigit() and idx > 2:
             if DEV_SHOW_LOG:
                 print('[findChar] FOUND Korean letter at [{0}] {1}'.format(idx, content))
+                logging.error('[findChar] FOUND Korean letter at [{0}] {1}'.format(idx, content))
             break
     return idx, content
 
@@ -768,6 +886,7 @@ def reformattingLP(result_chars):
     index, koreanChar = findChar(result_chars)
     if DEV_SHOW_LOG:
         print('[reformattingLP] FOUND Korean letter at [{0}/{1}] {2}'.format(index, len(result_chars), koreanChar))
+        logging.error('[reformattingLP] FOUND Korean letter at [{0}/{1}] {2}'.format(index, len(result_chars), koreanChar))
         
     
 def rerun():
@@ -801,6 +920,11 @@ def validateOldNum(num):
 
                         exit = 1
                         Result = main_data
+                        
+                        if DEV_SHOW_ERROR:
+                            logging.error("[18]validateOldNum")
+                        if DEV_SHOW_ERR:
+                            print("[18]validateOldNum")
             if(exit == 1): break
                 
         if(exit == 1): break
@@ -833,6 +957,10 @@ def validateNewNum(num):
                         
                         Result = main_data
                         exit = 1
+                        if DEV_SHOW_ERROR:
+                            logging.error("[17]validateNewNum")
+                        if DEV_SHOW_ERR:
+                            print("[17]validateNewNum")
             
             if(exit == 1): break
     
@@ -874,6 +1002,11 @@ def validateBusinessNum(num):
                                     
                                     Result = text1 + text2 + main_data
                                     exit = 1
+
+                                    if DEV_SHOW_ERROR:
+                                        logging.error("[16]validateBusinessNum")
+                                    if DEV_SHOW_ERR:
+                                        print("[16]validateBusinessNum")
         
                         if(exit == 1): break
                 
@@ -887,9 +1020,104 @@ def runtimeChecker(funcName, prevEndTime):
         return time.time()
     else:
         return 0
-    
+'''
+def run(repeat):
+    logging.error(repeat)
+    try:
+        global result_chars
+        global possible_contours
+        #[ S T A R T ]=============================================================================================
+        showSWVersion()
+        plt.style.use('dark_background')
+        #[READ INPUT IMG]
+        #PATH_IMG = str(sys.argv[1]) #USE argv[1] TO READ ONLY FILEPATH
+        #cam_location = PATH_IMG.split('/')[9] #get cam location from file path
+        cam_location = 'TEST'
+        #[LOAD IMAGE]
+        #img_orig = readImage(PATH_IMG)
+        img_orig = captureImageFromPiCam(repeat)
+        
+        #[SET UP CAMERAS]
+        setCamSetting(cam_location)
+        #[GET BRIGHTNESS AND RETURN THRESHOLD VALUE]
+        #threshold_val = imageThreshBasedOnBrightness(img_orig
+        threshold_val = imageThreshBasedOnBrightnessForNight(img_orig)
+        prevFuncEndTime = start_time
+        prevFuncEndTime = runtimeChecker("[imageThreshBasedOnBrightnessForNight]", prevFuncEndTime)
+        #[DENOISE IMAGE]
+        img_denoised = denoiseImage(img_orig)
+        prevFuncEndTime = runtimeChecker("[denoiseImage]", prevFuncEndTime)
+        #[ENLARGE IMAGE]
+        img_enlarged = enlargeImage(img_denoised)
+        img_threshed = convertIMGtoGrayscale(img_enlarged, threshold_val)
+        #[MAXIMIZE CONTRAST]
+        img_contrasted = maximizeContrast(img_threshed)
+        #[ADAPTIVE THRESHOLDING]
+        img_adapted = adaptivThresholding(img_contrasted)
+        #[FIND CONTOURS]
+        temp_result, contours = findContours(img_adapted)
+        #[PREPARE DATA]
+        contours_dict = prepareData(temp_result, contours)
+        #[SELECT CANDIDATES BY CHAR SIZE]
+        possible_contours = selectCandidates(temp_result, contours_dict)
+        visualizePossibleContours(possible_contours)
+        #[FIND CHARS FROM POSSIBLE CONTOURS
+        result_idx = find_chars(possible_contours)
+        matched_result = collectMatchedResult(result_idx, possible_contours)
+        plate_imgs = rotatePlateImages(matched_result, img_adapted)
+        #result_chars = anotherThresholdToFindChars(plate_imgs, PATH_IMG)
+        #result_chars = anotherThresholdToFindChars(plate_imgs)
+        data = anotherThresholdToFindChars(plate_imgs)
 
-def run():
+        
+        Original_Num = data[0]
+        img_data = data[1]
+                
+        today = datetime.now().strftime('%Y-%m-%d %H:%M:%S')    
+        # Result = ''
+        Result = validateBusinessNum(Original_Num)
+        if(Result[1] == 0): Result = validateNewNum(Original_Num)
+        if(Result[1] == 0): Result = validateOldNum(Original_Num)
+        
+        final_result_chars = reformattingLP(Original_Num)
+        print('[LP Found] Time: {0}'. format(today))
+        print('[LP Found] Original: {0}'.format(Original_Num))
+        print('[LP Found] Reformatted: {0}'.format(Result[0]))
+        print('[LP Found] Send Email to {0}'.format(EMAIL_ID))
+        # sendEmail(Original_Num, img_orig, today, Result[0], img_data)
+
+        if(Result[0]):
+            saveCapturedImage_Endcheck(img_orig, repeat, Result[0])
+            logging.error("Result[0] is not Data")
+
+        else:           
+            today = datetime.now().strftime('%Y-%m-%d %H:%M:%S')    
+            logging.error("@@@@@---ERRORERROR---@@@@@")
+            logging.error(repeat)
+            logging.error(today)
+            logging.error(Orignal_Num)
+            logging.error(traceback.format_exc()) # ERROR
+            logging.error("@@@@@---ERRORERROR---@@@@@")
+    except:
+        today = datetime.now().strftime('%Y-%m-%d %H:%M:%S')    
+        logging.error("@@@@@---ERRORERROR---@@@@@")
+        logging.error(repeat)
+        logging.error(today)
+        logging.error(traceback.format_exc())
+        logging.error("@@@@@---ERRORERROR---@@@@@")
+        
+'''
+
+
+
+
+
+
+
+
+def run(repeat):
+    logging.error(repeat)
+    
     global result_chars
     global possible_contours
     #[ S T A R T ]=============================================================================================
@@ -901,8 +1129,8 @@ def run():
     cam_location = 'TEST'
     #[LOAD IMAGE]
     #img_orig = readImage(PATH_IMG)
-    img_orig = captureImageFromPiCam()
-    
+    img_orig = captureImageFromPiCam(repeat)
+        
     #[SET UP CAMERAS]
     setCamSetting(cam_location)
     #[GET BRIGHTNESS AND RETURN THRESHOLD VALUE]
@@ -935,43 +1163,81 @@ def run():
     #result_chars = anotherThresholdToFindChars(plate_imgs)
     data = anotherThresholdToFindChars(plate_imgs)
 
-
-    img_data = data[1]
+        
     Original_Num = data[0]
-    
-    
+    img_data = data[1]
+                
     today = datetime.now().strftime('%Y-%m-%d %H:%M:%S')    
     # Result = ''
     Result = validateBusinessNum(Original_Num)
     if(Result[1] == 0): Result = validateNewNum(Original_Num)
     if(Result[1] == 0): Result = validateOldNum(Original_Num)
-    
+        
     final_result_chars = reformattingLP(Original_Num)
     print('[LP Found] Time: {0}'. format(today))
     print('[LP Found] Original: {0}'.format(Original_Num))
-    print('[LP Found] Reformatted: {0}'.format(final_result_chars))
+    print('[LP Found] Reformatted: {0}'.format(Result[0]))
     print('[LP Found] Send Email to {0}'.format(EMAIL_ID))
+    
+    logging.error('[LP Found] Time: {0}'. format(today))
+    logging.error('[LP Found] Original: {0}'.format(Original_Num))
+    logging.error('[LP Found] Reformatted: {0}'.format(Result[0]))
+    logging.error('[LP Found] Send Email to {0}'.format(EMAIL_ID))
     # sendEmail(Original_Num, img_orig, today, Result[0], img_data)
 
+    if(Result[0]):
+        saveCapturedImage_Endcheck(img_orig, repeat, Result[0])
+        print("Result[0] is not Data")
+        logging.error("Result[0] is not Data")
 
-'''
-start_time = time.time()
-run()
-tm = time.localtime(time.time() - start_time)
-print("[END TIME]--- %s seconds ---" % tm.tm_sec)
+    else:           
+        today = datetime.now().strftime('%Y-%m-%d %H:%M:%S')    
+        print("@@@@@---ERRORERROR---@@@@@")
+        print(repeat)
+        print(today)
+        print(Orignal_Num)
+        print(traceback.format_exc()) # ERROR
+        print("@@@@@---ERRORERROR---@@@@@")
+        
+        logging.error("@@@@@---ERRORERROR---@@@@@")
+        logging.error(repeat)
+        logging.error(today)
+        logging.error(Orignal_Num)
+        logging.error(traceback.format_exc()) # ERROR
+        logging.error("@@@@@---ERRORERROR---@@@@@")
+
 
 '''
 
 n = 0
 while True:
-    start_time = time.time()
-    print("repeat :", n)
-    run()
-    n = n + 1
-    tm = time.localtime(time.time() - start_time)
-    print("--- %s seconds ---" % tm.tm_sec)
 
-# exit()
+    start_time = time.time()
+    run(n)
+    tm = time.localtime(time.time() - start_time)
+    print(("[END]----------Repeat: %s, %s Seconds----------"%(n, tm.tm_sec)))
+    n = n + 1
+'''
+
+
+logging.basicConfig(filename='./error.log', level=logging.ERROR)
+
+n = 0
+try:
+    while True:
+        start_time = time.time()
+        run(n)
+        tm = time.localtime(time.time() - start_time)
+        print("@@@@@[END]---Repeat: %s, %s Seconds---[END]@@@@@" %(n, tm.tm_sec))
+        n = n + 1
+except:
+    today = datetime.now().strftime('%Y-%m-%d %H:%M:%S')    
+    print("@@@@@---ERRORERROR---@@@@@")
+    print(n)
+    print(today)
+    print(traceback.format_exc())
+    print("@@@@@---ERRORERROR---@@@@@")
+        
 
 
 

@@ -1,0 +1,855 @@
+ERROR:root:0
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 143.506 /  brightness_median: 126.0 / std: 60.692
+ERROR:root:threshold_val: 100.32
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:03:44
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:1
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 148.419 /  brightness_median: 132.0 / std: 60.275
+ERROR:root:threshold_val: 104.56300000000002
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 125가4568
+ERROR:root:Result: 125가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:03:52
+ERROR:root:[LP Found] Original: 125가4568
+ERROR:root:[LP Found] Reformatted: 125가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:2
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 148.549 /  brightness_median: 132.0 / std: 60.216
+ERROR:root:threshold_val: 104.882
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:03:59
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:3
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 148.215 /  brightness_median: 132.0 / std: 60.234
+ERROR:root:threshold_val: 104.196
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:131 plate ratio:4.419847328244275
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 125가4568
+ERROR:root:Result: 125가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:04:09
+ERROR:root:[LP Found] Original: 125가4568
+ERROR:root:[LP Found] Reformatted: 125가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:4
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 148.024 /  brightness_median: 132.0 / std: 60.33
+ERROR:root:threshold_val: 103.718
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:04:18
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:5
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 148.024 /  brightness_median: 132.0 / std: 60.37
+ERROR:root:threshold_val: 103.678
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:04:26
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:6
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 141.629 /  brightness_median: 124.0 / std: 60.789
+ERROR:root:threshold_val: 98.46899999999998
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:04:35
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:7
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 141.474 /  brightness_median: 124.0 / std: 60.797
+ERROR:root:threshold_val: 98.15099999999998
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:04:43
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:8
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 147.254 /  brightness_median: 131.0 / std: 60.383
+ERROR:root:threshold_val: 103.12499999999997
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:04:52
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:9
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 146.453 /  brightness_median: 130.0 / std: 60.748
+ERROR:root:threshold_val: 102.15800000000002
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:05:00
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:10
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 147.609 /  brightness_median: 131.0 / std: 60.113
+ERROR:root:threshold_val: 104.10500000000002
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:05:07
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:11
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 146.421 /  brightness_median: 130.0 / std: 60.163
+ERROR:root:threshold_val: 102.67899999999999
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:05:15
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:12
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 146.25 /  brightness_median: 130.0 / std: 60.366
+ERROR:root:threshold_val: 102.134
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:05:23
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:13
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 146.179 /  brightness_median: 130.0 / std: 60.395
+ERROR:root:threshold_val: 101.963
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:05:30
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:14
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 146.125 /  brightness_median: 130.0 / std: 60.379
+ERROR:root:threshold_val: 101.87100000000001
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:05:38
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:15
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 146.181 /  brightness_median: 130.0 / std: 60.369
+ERROR:root:threshold_val: 101.99300000000002
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:05:45
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:16
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 147.379 /  brightness_median: 131.0 / std: 60.12
+ERROR:root:threshold_val: 103.63799999999998
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:05:52
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:17
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 143.309 /  brightness_median: 131.0 / std: 53.973
+ERROR:root:threshold_val: 101.645
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:417 plate_width:142 plate ratio:2.936619718309859
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 125가4
+ERROR:root:Result: 125가4 / Digit Count: 4 / Last 4 Digits: 25가4
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/5] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:05:59
+ERROR:root:[LP Found] Original: 125가4
+ERROR:root:[LP Found] Reformatted: 125가4
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:18
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 142.634 /  brightness_median: 125.0 / std: 60.597
+ERROR:root:threshold_val: 99.67099999999996
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:06:08
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:19
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 149.272 /  brightness_median: 133.0 / std: 59.846
+ERROR:root:threshold_val: 105.69799999999998
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:06:16
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:20
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 149.312 /  brightness_median: 133.0 / std: 59.978
+ERROR:root:threshold_val: 105.64600000000002
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 125가4568
+ERROR:root:Result: 125가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:06:24
+ERROR:root:[LP Found] Original: 125가4568
+ERROR:root:[LP Found] Reformatted: 125가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:21
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 149.221 /  brightness_median: 133.0 / std: 59.997
+ERROR:root:threshold_val: 105.44500000000001
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:06:33
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:22
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 149.191 /  brightness_median: 133.0 / std: 59.986
+ERROR:root:threshold_val: 105.39600000000002
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:06:43
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:23
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 149.245 /  brightness_median: 133.0 / std: 59.981
+ERROR:root:threshold_val: 105.50900000000001
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:06:51
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:24
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 149.415 /  brightness_median: 133.0 / std: 59.983
+ERROR:root:threshold_val: 105.84699999999998
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 123가4568
+ERROR:root:Result: 123가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:07:00
+ERROR:root:[LP Found] Original: 123가4568
+ERROR:root:[LP Found] Reformatted: 123가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:25
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 149.401 /  brightness_median: 133.0 / std: 60.0
+ERROR:root:threshold_val: 105.80200000000002
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:579 plate_width:132 plate ratio:4.386363636363637
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 125가4568
+ERROR:root:Result: 125가4568 / Digit Count: 7 / Last 4 Digits: 4568
+ERROR:root:[15]anotherThresholdToFindChars
+ERROR:root:[17]validateNewNum
+ERROR:root:[findChar] FOUND Korean letter at [3] 가
+ERROR:root:[reformattingLP] FOUND Korean letter at [3/8] 가
+ERROR:root:[LP Found] Time: 2022-02-18 17:07:08
+ERROR:root:[LP Found] Original: 125가4568
+ERROR:root:[LP Found] Reformatted: 125가4568
+ERROR:root:[LP Found] Send Email to dw010130@gmail.com
+ERROR:root:Result[0] is not Data
+ERROR:root:26
+ERROR:root:LPR: Ver. 220216_00
+ERROR:root:[1]showSWVersion
+ERROR:root:[2]captureImageFromPiCam
+ERROR:root:File saved successfully
+ERROR:root:CAM Location Unknown
+ERROR:root:[3]setCamSetting
+ERROR:root:brightness_mean: 136.021 /  brightness_median: 118.0 / std: 58.589
+ERROR:root:threshold_val: 95.45299999999997
+ERROR:root:[4]imageThreshBasedOnBrightnessForNight
+ERROR:root:[5]denoiseImage
+ERROR:root:[6]enlargeImage
+ERROR:root:[7]convertIMGtoGrayscale
+ERROR:root:[8]maximizeContrast
+ERROR:root:[9]adaptivThresholding
+ERROR:root:[10]findContours
+ERROR:root:[11]prepareData
+ERROR:root:[12]selectCandidates
+ERROR:root:[13]visualizePossibleContours
+ERROR:root:plate_height:578 plate_width:130 plate ratio:4.446153846153846
+ERROR:root:[14]rotatePlateImages
+ERROR:root:LPR: 125가745681어
+ERROR:root:[15]anotherThresholdToFindChars
